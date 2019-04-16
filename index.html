@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Bookstore</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
+</head>
+
+<body>
+
+  <div id="app">
+    <div id="header">
+      <img id="logo" src="https://joebuhlig.com/assets/posts/bookwormlogo.png?">
+      <h1>Bookworm</h1>
+      <div id="search-bar">
+        <input id="searchinput" type="text" v-model="searchTerm" placeholder="Look for your book"></input>
+        <button id="search" @click="filter">Search</button>
+        <button id="clear" @click="filteredData = bookData; searchTerm=''">Clear</button>
+      </div>
+    </div>
+    <div id="content">
+      <div class="card-container" v-for="book in filteredData" ontouchstart="this.classList.toggle('hover')">
+        <div class="card">
+          <div class="card-front">
+            <img v-bind:src="book.cover">
+          </div>
+          <div class="card-back">
+            <div class="book-title">
+              {{book.title}}
+            </div>
+            <div class="book-description">
+              {{book.description}}
+            </div>
+            <a class="book-button" v-bind:href="book.detail" data-fancybox="gallery">
+              Open demo
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+  <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>
